@@ -1,4 +1,3 @@
-// public/app.js
 const form = document.querySelector("form");
 const input = document.querySelector('input[name="taskName"]');
 
