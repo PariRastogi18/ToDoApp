@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do App</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="container">
+        <h1>My To-Do List</h1>
+        <div class="addTaskArea">
+            <form action="/todo" method="post">
+              <input type="text" name="taskName" placeholder="Write your task here..." class="input" />
+              <button class="addbtn"><i class="fa-solid fa-plus"></i></button>
+            </form>
+        </div>
+        <br>
+        <% for(task of tasks) {%>
+            <div class="tasks">
+                <div class="taskName">
+                    <input type="checkbox"  id="<%= task.id %>">
+                    <label for="<%= task.id %>"><%= task.taskName %></label>
+                </div>
+                <div class="btn">
+                    <div style="display: inline;">
+                        <a href="http://localhost:8080/todo/<%= task.id %>/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </div>
+                    <span>
+                        <form action="/todo/<%= task.id %>?_method=DELETE" method="post" style="display: inline;" >
+                            <button class="dlt"><i class="fa-solid fa-delete-left"></i></button>
+                        </form>
+                    </span>
+                </div>
+            </div>
+            <br>
+            <% } %>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
